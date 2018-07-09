@@ -110,16 +110,12 @@ model {
   // Likelihood
   if (trend_indicator == 0) {
     y ~ normal(
-      linear_trend(k, m, delta, t, A, t_change)
-      .* (1 + X * (beta .* s_m))
-      + X * (beta .* s_a),
+      X * (beta .* s_a),
       sigma_obs
     );
   } else if (trend_indicator == 1) {
     y ~ normal(
-      logistic_trend(k, m, delta, t, cap, A, t_change, S)
-      .* (1 + X * (beta .* s_m))
-      + X * (beta .* s_a),
+      X * (beta .* s_a),
       sigma_obs
     );
   }
